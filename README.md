@@ -1,10 +1,13 @@
-# MTCNN-mxnet-cpp
-
+MTCNN-mxnet-cpp
+*******
 This project aims to implement face detection algorithm with mxnet c++ version. You can deploy the face detect part if use insightface(https://github.com/deepinsight/insightface) or other face recognition pipeline.
 
+Why start this project?
+--------------------
 There are many bugs or implement error for original mtcnn cpp version (such as https://github.com/deepinsight/mxnet-mtcnn), I list some typical issue:
 
 1.Memory leak
+____
     Forget to free pNet memory, especially pNet will run many times for different scale.
     
 2.Computing overhead optimization
