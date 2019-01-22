@@ -16,7 +16,7 @@ Frequently load pNet for every scale original image, loading params is a very ex
     
     (2)If shape may change, you can set a relatively larger shape PredictorHandle and padding 0 for smalle input.
     
-Anyway, currently mxnet C/C++ predict api can't automatically adjust predictor shape when network input batch or shape changes.
+Anyway, currently mxnet C/C++ predict api can't automatically adjust predictor shape when network input batch or shape changes. You can use MXPredReshape to change shape but this operation will also spent some time and some case may fail.
 
 ### 3. Numerical calculation
 #### (1) One case is round function get different result:
