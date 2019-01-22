@@ -1,8 +1,10 @@
 # MTCNN-mxnet-cpp
 --------------------
 This project aims to implement face detection algorithm with mxnet c++ version. You can deploy the face detect part if use insightface(https://github.com/deepinsight/insightface) or other face recognition pipeline.
-Python implement in insightface:
-![yanzi_1](https://github.com/njvisionpower/MTCNN-mxnet-cpp/blob/master/image/yanzi_1.jpg)
+
+<p align="center"> 
+<img src="https://github.com/njvisionpower/MTCNN-mxnet-cpp/blob/master/image/yanzi_1.jpg">
+</p>
 
 ## Why start this project?
 There are many bugs or implement error for original mtcnn cpp version (such as https://github.com/deepinsight/mxnet-mtcnn), here I list some typical issue:
