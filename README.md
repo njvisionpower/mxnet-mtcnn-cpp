@@ -18,11 +18,10 @@ Anyway, mxnet C/C++ api can't automatically
 
 ### 3.Numerical calculation
 #### (1)One case is round function get different result:
-In c++:  
+In c++ and python:
 
-    round(11.5) = 12, round(12.5) = 13    
-but if use python with numpy:  
-    np.round(11.5) = 12, np.round(12.5) = 12
+    round(11.5) = 12, round(12.5) = 13  
+    np.round(11.5) = 12, np.round(12.5) = 12  
 That is numpy consider the number is even or odd before "5".
 #### (2)Forget to +1 when calculate the bottom position of face bounding box:  
     float bottom_x = (int)((x*stride + cellSize) / scale);  -> float bottom_x = (int)((x*stride + cellSize +1 ) / scale); 
