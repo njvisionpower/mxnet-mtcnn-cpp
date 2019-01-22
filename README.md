@@ -4,15 +4,14 @@ This project aims to implement face detection algorithm with mxnet c++ version. 
 
 There are many bugs or implement error for original mtcnn cpp version (such as https://github.com/deepinsight/mxnet-mtcnn), I list some typical issue:
 
-    1.Memory leak
+1.Memory leak
     Forget to free pNet memory, especially pNet will run many times for different scale.
 
 2.Computing overhead optimization
-  Frequently load pNet as the shape of different scale original input image, loading params is a very expensive operation in mxnet. Two     strategy for this:  
+    Frequently load pNet as the shape of different scale original input image, loading params is a very expensive operation in mxnet. Two     strategy for this:  
+    (1)If your image shape is fixed, you can loading k(k is the number of scales) model for different scale, pnet is very small so will    not occupy too many memory. Aslo this step can be easyly implement with multi-thread.
 
-  (1)If your image shape is fixed, you can loading k(k is the number of scales) model for different scale, pnet is very small so will not   occupy too many memory. Aslo this step can be easyly implement with multi-thread.
-
-  (2)If image shape may change, you can set a relatively larger PredictorHandle for different scale.
+    (2)If image shape may change, you can set a relatively larger PredictorHandle for different scale.
 Anyway, mxnet C/C++ api can't automatically 
 
 3.Numerical calculation
