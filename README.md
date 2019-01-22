@@ -1,6 +1,6 @@
-# vision_cxx
+# MTCNN-mxnet-cpp
 
-This project aims to implement face detection algorithm with mtcnn with mxnet c++ version. You can deploy the face detect part if use insightface(https://github.com/deepinsight/insightface) or other face recognition pipeline.
+This project aims to implement face detection algorithm with mxnet c++ version. You can deploy the face detect part if use insightface(https://github.com/deepinsight/insightface) or other face recognition pipeline.
 
 There are many bugs or implement error for original mtcnn cpp version (such as https://github.com/deepinsight/mxnet-mtcnn), I list some typical issue:
 
@@ -8,7 +8,7 @@ There are many bugs or implement error for original mtcnn cpp version (such as h
 Forget to free pNet memory, especially pNet will run many times for different scale.
 
 2.Computing overhead optimization
-Frequently load pNet as the shape of different scale original input image, loading params is a very expensive operation in mxnet. Two strategy for this:
+Frequently load pNet as the shape of different scale original input image, loading params is a very expensive operation in mxnet. Two strategy for this:  
 
 (1)If your image shape is fixed, you can loading k(k is the number of scales) model for different scale, pnet is very small so will not occupy too many memory. Aslo this step can be easyly implement with multi-thread.
 
@@ -21,6 +21,7 @@ Anyway, mxnet C/C++ api can't automatically
 In c++ round(11.5) = 12, round(12.5) = 13, but if use python with numpy round(11.5) = 12, round(12.5) = 12, that is numpy consider the number is even or odd before "5".
 
 (2)Forget to +1 when calculate the bottom position of face bounding box:
+
 float bottom_x = (int)((x*stride + cellSize) / scale);  -> float bottom_x = (int)((x*stride + cellSize +1 ) / scale); 
 float bottom_y = (int)((y*stride + cellSize) / scale);  -> float bottom_y = (int)((y*stride + cellSize +1 ) / scale);
 
