@@ -6,7 +6,13 @@ This project aims to implement face detection algorithm with mxnet c++ version. 
 <img src="https://github.com/njvisionpower/MTCNN-mxnet-cpp/blob/master/image/yanzi_1.jpg">
 </p>
 
-## Why start this project?
+## How to run
+
+### Windows
+    1. Check out this project and add all src files to your vs project.
+    2. Add model folder and image to your vs project
+    3. Compile and run the project.
+## Why start this project
 There are many bugs or implement error for original mtcnn cpp version (such as https://github.com/deepinsight/mxnet-mtcnn), here I list some typical issue:
 
 ### 1. Memory leak
