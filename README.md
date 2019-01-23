@@ -6,7 +6,13 @@ This project aims to implement face detection algorithm with mxnet c++ version. 
 <img src="https://github.com/njvisionpower/MTCNN-mxnet-cpp/blob/master/image/yanzi_1.jpg">
 </p>
 
-## Why start this project?
+## How to run
+
+### Windows
+    1. Check out this project and add all src files to your vs project.
+    2. Add model folder and image folder to your vs project
+    3. Compile and run the project.
+## Why start this project
 There are many bugs or implement error for original mtcnn cpp version (such as https://github.com/deepinsight/mxnet-mtcnn), here I list some typical issue:
 
 ### 1. Memory leak
@@ -23,13 +29,13 @@ Frequently load pNet for every scale original image, loading params is a very ex
 Anyway, currently mxnet C/C++ predict api can't automatically adjust predictor shape when network input batch or shape changes. You can use MXPredReshape to change shape but this operation will also spent some time and some case may fail.
 
 ### 3. Numerical calculation
-#### (1) One case is round function get different result:
+#### 1) One case is round function get different result:
 In c++ and python:
 
     round(11.5) = 12, round(12.5) = 13  
     np.round(11.5) = 12, np.round(12.5) = 12  
 That is numpy consider the number is even or odd before "5".
-#### (2) Forget to +1 when calculate the bottom position of face bounding box:  
+#### 2) Forget +1 when calculate the bottom position of face bounding box:  
     float bottom_x = (int)((x*stride + cellSize) / scale);  -> float bottom_x = (int)((x*stride + cellSize +1 ) / scale); 
     float bottom_y = (int)((y*stride + cellSize) / scale);  -> float bottom_y = (int)((y*stride + cellSize +1 ) / scale);
 
